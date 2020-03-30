@@ -1,0 +1,342 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+    <!-- slider -->
+  <div  class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block " src="{% static "app/img/pic2.jpg"%}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block "src="{% static "app/img/pic1.jpg"%}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block "src="{% static "app/img/pic3.jpg"%}" alt="Third slide">
+        </div>
+      </div>
+    </div>
+    <!-- end slider -->
+    <!-- products -->
+
+    <!-- clothes -->
+    <div class="product ">
+      <h1>Clothes</h1>
+      <div class="row">
+        {%for i in products%}
+        {%if i.type == 'clothes' %}
+        <a href="{%url 'app:detail' i.id%}  "><div class="col">
+          <img src="{{i.image.url}}" alt="picture">
+          <hr>
+          {%if i.rating > 0 and i.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 1 and i.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 2 and i.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 3 and i.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 4 and i.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          <br>
+          <span class="price">Price : {{i.price}} $</span>
+          <a href="{%url 'app:add_cart' i.id%}"class="bg-success">Add in Cart</a>
+          <a href="{%url 'app:add_order' i.id%}"class="bg-danger">Buy Now</a><br><br>
+        </div></a>
+        {%endif%}
+        {%empty%}
+        <h1>no products</h1>
+
+        {%endfor%}
+      </div>
+    </div>
+    <!--  -->
+    <!-- footwear -->
+    <div class="product ">
+      <h1>Footwear</h1>
+      <div class="row">
+        {%for i in products%}
+        {%if i.type == 'footwear' %}
+        <a href="{%url 'app:detail' i.id%}"><div class="col">
+          <img src="{{i.image.url}}" alt="picture">
+          <hr>
+           {%if i.rating > 0 and i.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 1 and i.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 2 and i.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 3 and i.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 4 and i.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}<br>
+          <span class="price">Price : {{i.price}} $</span>
+          <a href="{%url 'app:add_cart' i.id%}" class="bg-success">Add in Cart</a>
+          <a href="{%url 'app:add_order' i.id%}" class="bg-danger">Buy Now</a><br><br>
+        </div></a>
+        {%endif%}
+        {%empty%}
+        <h1>no products</h1>
+        {%endfor%}
+      </div>
+    </div>
+    <!--  -->
+    <!-- jwellary -->
+
+    <div class="product ">
+      <h1>Jwellary</h1>
+      <div class="row">
+        {%for i in products%}
+        {%if i.type == 'jwellary' %}
+        <a href="{%url 'app:detail' i.id%}"><div class="col">
+          <img src="{{i.image.url}}" alt="picture">
+          <hr>
+           {%if i.rating > 0 and i.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 1 and i.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 2 and i.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 3 and i.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 4 and i.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}<br>
+          <span class="price">Price : {{i.price}} $</span>
+          <a href="{%url 'app:add_cart' i.id%}" class="bg-success">Add in Cart</a>
+          <a href="{%url 'app:add_order' i.id%}" class="bg-danger">Buy Now</a><br><br>
+        </div></a>
+        {%endif%}
+        {%empty%}
+        <h1>no products</h1>
+        {%endfor%}
+      </div>
+    </div>
+
+    <!--  handbags-->
+    <div class="product ">
+      <h1>HandBags</h1>
+      <div class="row">
+        {%for i in products%}
+        {%if i.type == 'handbags' %}
+        <a href="{%url 'app:detail' i.id%}"><div class="col">
+          <img src="{{i.image.url}}" alt="picture">
+          <hr>
+           {%if i.rating > 0 and i.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 1 and i.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 2 and i.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 3 and i.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 4 and i.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}<br>
+          <span class="price">Price : {{i.price}} $</span>
+          <a href="{%url 'app:add_cart' i.id%}" class="bg-success">Add in Cart</a>
+          <a href="{%url 'app:add_order' i.id%}" class="bg-danger">Buy Now</a><br><br>
+        </div></a>
+        {%endif%}
+        {%empty%}
+        <h1>no products</h1>
+        {%endfor%}
+      </div>
+    </div>
+    <!--  -->
+    <!-- Sportswear -->
+    <div class="product ">
+      <h1>Sportswear</h1>
+      <div class="row">
+        {%for i in products%}
+        {%if i.type == 'sportswear' %}
+        <a href="{%url 'app:detail' i.id%}"><div class="col">
+          <img src="{{i.image.url}}" alt="picture">
+          <hr>
+           {%if i.rating > 0 and i.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 1 and i.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 2 and i.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 3 and i.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if i.rating > 4 and i.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}<br>
+          <span class="price">Price : {{i.price}} $</span>
+          <a href="{%url 'app:add_cart' i.id%}" class="bg-success">Add in Cart</a>
+          <a href="{%url 'app:add_order' i.id%}" class="bg-danger">Buy Now</a><br><br>
+        </div></a>
+        {%endif%}
+        {%empty%}
+        <h1>no products</h1>
+        {%endfor%}
+      </div>
+    </div>
+    <!--  -->
+
+<!-- contact form -->
+<form id="contact-form" method="post" onsubmit="contacts()" action="{%url 'app:save_contact' %}">
+  {%csrf_token%}
+  <br>
+  <h1>Contact Form</h1>
+  <br>
+  <div class="form-row">
+    <div class="col">
+        <p>Enter First name</p>
+      <input type="text" class="form-control" name="firstname" placeholder="First name" required>
+    </div>
+    <div class="col">
+      <p>Enter Last name</p>
+      <input type="text" required name="lastname" class="form-control" placeholder="Last name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <p>Enter Email</p>
+      <input type="email" required class="form-control" name="email" placeholder="Enter Email">
+    </div>
+    <div class="col">
+      <p>Enter phone number</p>
+      <input type="number" required name="phone" class="form-control" placeholder="Enter phone number">
+    </div>
+  </div>
+  <p style="margin-left:25px;">Enter Address</p>
+<textarea placeholder="Enter address" required name="address" rows="8" cols="80"></textarea><br>
+<button  type="submit" name="button">Submit Form</button><br><br><br>
+</form><hr>
+<script>
+ function contacts(){
+   alert("data posted succesfully");
+ }
+</script>
+  {%endblock%}

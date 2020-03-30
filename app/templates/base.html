@@ -1,0 +1,108 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{%static "app/css/style.css"%}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static "app/css/bootstrap.css"%}">
+    <link rel="stylesheet" href="{%static "app/css/font.css"%}">
+
+    <title>FASHION BAZAR</title>
+  </head>
+  <body>
+    {%for message in messages%}
+    <script>alert("{{message}} ")</script>
+  {%endfor%}
+ <!--  -->
+<header id="top">
+  <a href="{%url 'app:index'%}" }>
+    <img src="{% static "app/img/logo.png"%}" alt="">
+  </a>
+  <h1>FASHION BAZAR</h1>
+  <div class="conatct">
+      {%if user.is_authenticated %}
+    <p>
+      <a href="{%url 'app:view_cart'%}">Cart <span>{{c}}</span> items,price: <span>{{cs}} $</span> </a>
+    </p>
+    <p><a href="{%url 'app:view_order'%}">Orders <span>{{o}}</span> items,price : <span>{{os}} $</span>
+      </a></p>
+      {%endif%}
+  </div>
+  {%if request.user.is_authenticated%}
+  <div class="login">
+    {%if request.user.is_superuser%}
+    <a href="/admin"><img src="{{request.user.picture.url}}" alt="logo"></a>
+    {%else%}
+    <img src="{{request.user.picture.url}}" alt="logo">
+    {%endif%}
+    <a class="btn btn-info" href="{%url 'app:logout_view'%}">Logout</a>
+    <a class="btn btn-warning" href="{%url 'app:update_profile_page' %}">Update</a>
+  </div>
+
+  {%else%}
+  <div class="login">
+    <a class="btn btn-info" href="{% url 'app:login_page'%}">Login</a>
+    <a class="btn btn-warning" href="{%url 'app:signup_page' %}">SignUp</a>
+  </div>
+  {%endif%}
+</header>
+
+
+<!-- footer -->
+{%block content%}  {%endblock%}
+<footer>
+    <div class="foot">
+      <div>
+          <h1>Quick Links</h1>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+
+      </div>
+      <div>
+          <h1>Quick Links</h1>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+
+      </div>
+      <div>
+          <h1>Quick Links</h1>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+
+      </div>
+      <div>
+          <h1>Quick Links</h1>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+        <p><a href="#">home</a></p>
+
+      </div>
+    </div>
+    <div class="copy">
+      Copyright &copy; all rights reserved
+    </div>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+    </body>
+  </html>

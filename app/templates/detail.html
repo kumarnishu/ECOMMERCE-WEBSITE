@@ -1,0 +1,52 @@
+{%extends 'index.html'%}
+{%load static%}
+
+{%block content%}
+<div class="product-detail ">
+    <h1>Clothes</h1>
+    <div class="row">
+        <div class="col">
+            <img src="{{product.image.url}}" alt="picture">
+            <hr>
+           {%if product.rating > 0 and product.rating < 2 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if product.rating > 1 and product.rating < 3 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if product.rating > 2 and product.rating < 4 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if product.rating > 3 and product.rating < 5 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}
+          {%if product.rating > 4 and product.rating < 6 %}
+          <span class="rating">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+            <img src="{% static "app/img/filled.png"%}" alt="">
+          </span>
+          {%endif%}<br>
+            <span class="price">Price : {{product.price}} $</span>
+            <a href="{%url 'app:add_cart' product.id%}" class="bg-success">Add in Cart</a>
+            <a href="{%url 'app:add_order' product.id%}" class="bg-danger">Buy Now</a><br><br>
+        </div>
+    </div>
+</div>
+{%endblock%}
